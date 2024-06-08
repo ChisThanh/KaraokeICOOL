@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="85bfbc5911304236ae16fddc3b987f14" Name="Diagram1">
+        <EntityTypeShape EntityType="KaraokeICOOLModel.CTHDDV" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaraokeICOOLModel.DichVu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaraokeICOOLModel.HDDichVu" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaraokeICOOLModel.HoaDon" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaraokeICOOLModel.LoaiPhong" Width="1.5" PointX="1.5" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaraokeICOOLModel.NhanVien" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaraokeICOOLModel.PhieuDat" Width="1.5" PointX="3.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaraokeICOOLModel.PhieuPhat" Width="1.5" PointX="3.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaraokeICOOLModel.Phong" Width="1.5" PointX="1.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaraokeICOOLModel.TaiKhoan" Width="1.5" PointX="1.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaraokeICOOLModel.ThietBi" Width="1.5" PointX="4.5" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaraokeICOOLModel.Tiec" Width="1.5" PointX="1.5" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaraokeICOOLModel.TrangBi" Width="1.5" PointX="6.75" PointY="12.375" IsExpanded="true" />
+        <AssociationConnector Association="KaraokeICOOLModel.FK_CTHDDV_DichVu" ManuallyRouted="false" />
+        <AssociationConnector Association="KaraokeICOOLModel.FK_CTHDDV_HDDichVu" ManuallyRouted="false" />
+        <AssociationConnector Association="KaraokeICOOLModel.FK_HoaDon_HDDichVu" ManuallyRouted="false" />
+        <AssociationConnector Association="KaraokeICOOLModel.FK_HoaDon_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="KaraokeICOOLModel.FK_HoaDon_PhieuDat" ManuallyRouted="false" />
+        <AssociationConnector Association="KaraokeICOOLModel.FK_HoaDon_PhieuPhat" ManuallyRouted="false" />
+        <AssociationConnector Association="KaraokeICOOLModel.PK_Phong_LoaiPhong" ManuallyRouted="false" />
+        <AssociationConnector Association="KaraokeICOOLModel.FK_NhanVien_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="KaraokeICOOLModel.FK_PhieuDat_Phong" ManuallyRouted="false" />
+        <AssociationConnector Association="KaraokeICOOLModel.FK_PhieuDat_Tiec" ManuallyRouted="false" />
+        <AssociationConnector Association="KaraokeICOOLModel.FK_TrangBi_Phong" ManuallyRouted="false" />
+        <AssociationConnector Association="KaraokeICOOLModel.FK_TrangBi_ThietBi" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
