@@ -12,19 +12,24 @@ namespace DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class KaraokeICOOLEntities : DbContext
     {
+        //public KaraokeICOOLEntities()
+        //    : base("name=KaraokeICOOLEntities")
+        //{
+        //}
+
+
         public KaraokeICOOLEntities()
-            : base("name=KaraokeICOOLEntities")
+            : base("name=VanAnhConnections")
         {
         }
-    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<CTHDDV> CTHDDVs { get; set; }
         public virtual DbSet<DichVu> DichVus { get; set; }
         public virtual DbSet<HDDichVu> HDDichVus { get; set; }
