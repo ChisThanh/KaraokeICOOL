@@ -44,12 +44,12 @@ CREATE TABLE HoaDon(
 	MaHD int IDENTITY(1,1) NOT NULL,
 	MaNV int NOT NULL,
 	GioVao datetime NOT NULL,
-	GioRa datetime NOT NULL,
-	TongTien bigint NULL,
-	NgayLap date NOT NULL,
+	GioRa datetime,
+	TongTien bigint,
+	NgayLap date,
 	MaPhieuPhat int NULL,
 	MaHDDV int NULL,
-	MaPhieuDat int NULL,
+	MaPhieuDat int,
  CONSTRAINT PK_HoaDon PRIMARY KEY (MaHD) 
 )
 GO
@@ -275,6 +275,8 @@ INSERT HoaDon (MaHD, MaNV, GioVao, GioRa, TongTien, NgayLap, MaPhieuPhat, MaHDDV
 INSERT HoaDon (MaHD, MaNV, GioVao, GioRa, TongTien, NgayLap, MaPhieuPhat, MaHDDV, MaPhieuDat) VALUES (54, 3, CAST(N'2023-11-06T09:00:00.000' AS DateTime), CAST(N'2023-11-06T12:00:00.000' AS DateTime), 5400000, CAST(N'2023-05-11' AS Date), NULL, 11, 19)
 INSERT HoaDon (MaHD, MaNV, GioVao, GioRa, TongTien, NgayLap, MaPhieuPhat, MaHDDV, MaPhieuDat) VALUES (55, 4, CAST(N'2023-12-06T14:00:00.000' AS DateTime), CAST(N'2023-12-06T19:00:00.000' AS DateTime), 4100000, CAST(N'2023-06-12' AS Date), NULL, 12, 20)
 SET IDENTITY_INSERT HoaDon OFF
+GO
+INSERT HoaDon (MaHD, MaNV, GioVao,MaHDDV) VALUES (1, 3, CAST(N'2024-06-11T14:00:00.000' AS DateTime),1)
 GO
 --==============================================================================================================
 SET IDENTITY_INSERT LoaiPhong ON 
