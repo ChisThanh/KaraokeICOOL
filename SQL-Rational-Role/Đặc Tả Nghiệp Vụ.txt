@@ -1,0 +1,186 @@
+Tác Nhân: Khách Hàng, Sếp Lớn
+Thừa Tác Viên: Tiếp Tân, Phục Vụ, Kỹ Thuật, Quản Lý
+Thực Thế: Phòng, Phiếu Đặt Phòng, Tiệc, Phiếu Đặt Tiệc, Hóa Đơn, Thiết Bị, Phiếu Phạt, Đồ Ăn, Hóa Đơn Đồ Ăn, Nhân Viên, Tài Khoản, Thống Kê
+
+-----------------------------------------------------------
+
+Nghiệp Vụ Đặt Phòng
+
+Use-case bắt đầu khi Khách Hàng đến hay gọi và yêu cầu đặt phòng hay tiệc
+Use-case thể hiện được quá trình đặt phòng của Khách Hàng 
+
+Dòng cơ bản:
+	1. Tiếp Tân nhận thông tin và yêu cầu của Khách Hàng
+	2. Tiếp Tân kiểm tra phòng phù hợp với yêu cầu của Khách Hàng
+	3. Tiếp Tân lập phiếu đặt phòng và kết thúc Use-Case Đặt Phòng
+
+Dòng thay thế
+	Tại bước 2: Nếu không có phòng theo yêu cầu thì sẽ báo cho Khách Hàng và kết thúc Use-Case Đặt Phòng
+	Tại bước 3: 
+		+ Nếu Khách Hàng đặt trực tiếp thì Tiếp Tân sẽ giao phiếu đặt phòng cho Khách Hàng
+		+ Nếu Khách Hàng đặt trực tuyến thì Tiếp Tân sẽ gửi mail phiếu đặt phòng cho Khách Hàng
+
+-----------------------------------------------------------
+
+Nghiệp Vụ Đặt Tiệc
+
+Use-case bắt đầu khi Khách Hàng đến hay gọi và yêu cầu đặt tiệc
+Use-case thể hiện được quá trình đặt tiệc của Khách Hàng
+
+Dòng cơ bản:
+	1. Tiếp Tân nhận thông tin của Khách Hàng
+	2. Tiếp Tân lấy thông tin tiệc
+	3. Tiếp Tân cho Khách Hàng lựa chọn loại tiệc (có sẳn hay là tự thiết kế)
+	4. Thực hiện Use-Case Đặt Phòng
+	5. Tiếp Tân tính phí tiệc
+	6. Tiếp Tân nhận tiền đặc cọc (20% phí)
+	7. Tiếp Tân lập phiếu đặt tiệc
+	8. Tiếp Tân báo cáo cho Phục Vụ để chuẩn bị bữa tiệc và kết thúc Use-Case Đặt Tiệc trực tiếp
+
+Dòng thay thế:
+	Tại bước 3: Nếu không có tiệc phù hợp thì thực hiện Use-Case Thiết Kế Tiệc
+			+ Nếu không thiết kế được tiệc mới thì kết thúc Use-Case Đặt Tiệc
+	Tại bước 4: Nếu không có phòng phù hợp thì kết thúc Use-Case Đặt Tiệc
+	Tại bước 6:
+		+ Nếu Khách Hàng đặt trực tiếp thì Tiếp Tân sẽ nhận tiền đặt cọc từ Khách Hàng
+		+ Nếu Khách Hàng đặt trực tuyến thì Tiếp Tân sẽ nhận tiền đặt cọc qua hình thức chuyển khoản từ Khách Hàng
+	Tại bước 7:
+		+ Nếu Khách Hàng đặt trực tiếp thì Tiếp Tân sẽ giao phiếu đặt tiệc cho Khách Hàng
+		+ Nếu Khách Hàng đặt trực tuyến thì Tiếp Tân sẽ gửi mail phiếu đặt tiệc cho Khách Hàng
+
+-----------------------------------------------------------
+
+Nghiệp Vụ Thiết Kế Tiệc
+
+Use-case bắt đầu khi Khách Hàng đến đặt tiệc và muốn thiết kế tiệc riêng của mình
+Use-case thể hiện được quá trình thiết kế tiệc của Khách Hàng
+
+Dòng cơ bản:
+	1. Tiếp Tân nhận thông tin về tiệc của Khách Hàng
+	2. Quản Lý thương lượng phí tiệc với Khách Hàng
+	2. Tiếp Tân tạo tiệc mới và kết thúc Use-Case Thiết Kế Tiệc
+
+Dòng thay thế:
+	Tại bước 2: Nếu thương lượng không thành công thì kết thúc Use-Case Thiết Kế Tiệc
+
+-----------------------------------------------------------
+
+Nghiệp Vụ Nhận Phòng
+
+Use-case bắt đầu khi Khách Hàng đến nhận phòng sau khi đã đặt phòng
+Use-case thể hiện được quá trình nhận phòng của Khách Hàng
+
+Dòng cơ bản:
+	1. Tiếp Tân xác thực thông tin đặt phòng từ phiếu đặt phòng của Khách Hàng
+	2. Phục Vụ dẫn Khách Hàng đến phòng đã đặt
+	3. Tiếp Tân cập nhật phiếu đặt phòng và kết thúc Use-Case Nhận Phòng
+
+Dòng thay thế:
+	Tại bước 1: Nếu Khách Hàng có đặt tiệc thì xác nhận thông tin đặt tiệc từ phiếu đặt tiệc của Khách Hàng
+	Tại bước 3: Nếu Khách Hàng có nhu cầu đặt dịch vụ thì thực hiện Use-Case Đặt Dịch Vụ và kết thúc Use-Case Nhận Phòng
+
+-----------------------------------------------------------
+
+Nghiệp Vụ Đặt Dịch Vụ
+
+Use-case bắt đầu khi Khách Hàng có nhu cầu đặt dịch vụ thêm khi đang thuê phòng
+Use-case thể hiện được quá trình đặt dịch vụ của Khách Hàng
+
+Dòng cơ bản:
+	1. Phục Vụ nhận yêu cầu của Khách Hàng
+	2. Phục Vụ kiểm tra dịch vụ
+	3. Phục Vụ chuẩn bị dịch vụ
+	4. Phục Vụ giao dịch vụ cho Khách Hàng
+	5. Phục Vụ lập hóa đơn dịch vụ và kết thúc Use-Case Đặt Dịch Vụ
+
+Dòng thay thế:
+	Tại bước 2: Nếu không có dịch vụ phù hợp thì sẽ thông báo cho Khách Hàng và kết thúc Use-Case Đặt Dịch Vụ
+
+-----------------------------------------------------------
+
+Nghiệp Vụ Trả Phòng
+
+Use-case bắt đầu khi Khách Hàng đến yêu cầu trả phòng
+Use-case thể hiện được quá trình trả phòng của Khách Hàng
+
+Dòng cơ bản:
+	1. Tiếp Tân xác thực thông tin đặt phòng từ phiếu đặt phòng của Khách Hàng
+	2. Thực hiện Use-Case Kiểm Phòng
+	3. Tiếp Tân sẽ lập hóa đơn
+	4. Tiếp Tân nhận tiền và đưa hóa đơn cho Khách Hàng
+	5. Tiếp Tân cập nhật phiếu đặt phòng và kết thúc Use-Case Trả Phòng
+
+Dòng thay thế:
+	Tại bước 4: Nếu Khách Hàng có đặt tiệc thì sẽ trả lại tiền cọc cho Khách Hàng
+
+-----------------------------------------------------------
+
+Nghiệp Vụ Kiểm Phòng
+
+Use-case bắt đầu khi Khách Hàng trong quá trình trả phòng
+Use-case thể hiện được quá trình kiểm tra phòng của Khách Hàng
+
+Dòng cơ bản:
+	1. Kỹ Thuật tra cứu thông tin thiết bị của phòng
+	2. Kỹ Thuật kiểm tra thiết bị hiện tại của phòng
+	3. Kỹ Thuật lập phiếu phạt và kết thúc Use-Case Kiểm Phòng
+
+Dòng thay thế:
+	Tại bước 2: Nếu không có thiết bị hư hỏng thì kết thúc Use-Case Kiểm Phòng
+
+-----------------------------------------------------------
+
+Nghiệp Vụ Hủy Phòng
+
+Use-case bắt đầu khi Khách Hàng báo hủy phòng, hủy tiệc, hay Khách Hàng không đến nhận phòng khi đã quá hạn
+Use-case thể hiện được quá trình hủy phòng của Khách Hàng
+
+Dòng cơ bản:
+	1. Tiếp Tân xác thực thông tin đặt tiệc từ phiếu đặt phòng của Khách Hàng
+	2. Tiếp Tân cập nhật phiếu đặt phòng và kết thúc Use-Case Hủy Phòng
+
+-----------------------------------------------------------
+
+Nghiệp Vụ Hủy Tiệc
+
+Use-case bắt đầu khi Khách Hàng báo hủy tiệc hay Khách Hàng không đến nhận phòng khi đã quá hạn
+Use-case thể hiện được quá trình hủy phòng của Khách Hàng
+
+Dòng cơ bản:
+	1. Tiếp Tân xác thực thông tin đặt phòng từ phiếu đặt tiệc của Khách Hàng
+	2. Thực hiện Use-Case Hủy Phòng
+	3. Tiếp Tân cập nhật phiếu đặt tiệc và kết thúc Use-Case Hủy Tiệc
+
+-----------------------------------------------------------
+
+Nghiệp Vụ Thống Kê Kinh Doanh
+
+Use-case bắt đầu khi Sếp Lớn muốn thống kê doanh thu làm việc của cơ sở
+Use-case thể hiện được quá trình tạo thống kê doanh thu cho Sếp Lớn
+
+Dòng cơ bản:
+	1. Quản Lý thống kê doanh thu dựa trên hóa đơn và tạo đồ thị thống kê
+	2. Quản Lý thống kê dịch vụ bán chạy nhất dựa trên hóa đơn dịch vụ và tạo đồ thị thống kê
+	3. Quản Lý giao thống kê cho Sếp Lớn và kết thúc Use-Case Thống Kê Doanh Thu
+
+
+-----------------------------------------------------------
+
+Nghiệp Vụ Cập Nhật Cơ Sở Vật Chất
+
+Use-case bắt đầu khi Sếp Lớn muốn cập nhật cơ sở vật chất
+Use-case thể hiện được quá trình cập nhật cơ sở vật chất cho Sếp Lớn
+
+Dòng cơ bản:
+	1. Quản Lý nhận yêu cầu từ Sếp Lớn về cơ sở vật chất cần cập nhật
+	2. Quản Lý thêm, xóa, sửa thông tin hệ thống tùy theo yêu cầu từ Sếp Lớn
+	3. Quản Lý báo cáo cho Sếp Lớn và kết thúc Use-case Cập Nhật Cơ Sở Vật Chất
+
+
+
+	
+
+
+
+
+
