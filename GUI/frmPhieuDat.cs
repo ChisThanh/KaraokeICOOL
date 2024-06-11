@@ -144,7 +144,8 @@ namespace KaraokeICOOL
 
 					if (party != null) cbx_TenTiec.SelectedItem = party;
 
-					tbx_PhiTiec.Text = dgv_PhieuDat.SelectedRows[0].Cells["PhiTiec"].Value.ToString();
+					if(dgv_PhieuDat.SelectedRows[0].Cells["PhiTiec"].Value != null)
+						tbx_PhiTiec.Text = dgv_PhieuDat.SelectedRows[0].Cells["PhiTiec"].Value.ToString();
 				}
 				else ckb_Tiec.Checked = false;
 
@@ -283,7 +284,7 @@ namespace KaraokeICOOL
 			}
 			catch
 			{
-				MessageBox.Show("Lỗi Thêm Phiếu Đặt Phòng!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Lỗi Thêm Phiếu Đặt!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -319,6 +320,8 @@ namespace KaraokeICOOL
 			loadPhieuDat();
 
 			selectRowInDataGridView(phieudat);
+
+			MessageBox.Show("Cập Nhật Phiếu Đặt Thành Công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 
@@ -349,6 +352,8 @@ namespace KaraokeICOOL
 			loadPhieuDat();
 
 			selectRowInDataGridView(phieudat);
+
+			MessageBox.Show("Cập Nhật Phiếu Đặt Thành Công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void btn_TimKiem_Click(object sender, EventArgs e)
