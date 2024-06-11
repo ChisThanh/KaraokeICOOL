@@ -11,11 +11,9 @@ namespace DAL
 {
     using System;
     
-    public partial class DsDichVu_Result
+    public partial class PROC_THONGKE_SOLUONG_DON_Result
     {
-        public int MaDV { get; set; }
-        public string TenDV { get; set; }
-        public long Gia { get; set; }
-        public string GhiChu { get; set; }
+        public Nullable<int> Month { get; set; }
+        public Nullable<decimal> Quantity { get; set; }
     }
 }

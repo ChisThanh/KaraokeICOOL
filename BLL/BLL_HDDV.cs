@@ -40,5 +40,9 @@ namespace BLL
             dal.updateCTHDDV(maHDDV, maDV,sl);
         }
 
+        public  HDDichVu GetDetailById(int id)
+        {
+            return dal.GetDetailById(id);
+        }
     }
 }

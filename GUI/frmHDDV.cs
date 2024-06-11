@@ -38,7 +38,7 @@ namespace KaraokeICOOL
         }
         private void LoadDichVu()
         {
-            var dv= db.DsDichVu();
+            var dv = db.PROC_DsDichVu().ToList();
             dgv_dichvu.DataSource = dv;
         }
 

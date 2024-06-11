@@ -55,6 +55,9 @@
   <ItemGroup>
     <Compile Include="DAL_DichVu.cs" />
     <Compile Include="DAL_HDDV.cs" />
+    <Compile Include="DAL_HoaDon.cs" />
+    <Compile Include="DAL_PhieuDat.cs" />
+    <Compile Include="DAL_PhieuPhat.cs" />
     <Compile Include="DAL_TaiKhoan.cs" />
     <Compile Include="CTHDDV.cs">
       <DependentUpon>Database.tt</DependentUpon>
@@ -75,9 +78,6 @@
       <DependentUpon>Database.edmx</DependentUpon>
     </Compile>
     <Compile Include="DichVu.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DsDichVu_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="DSHDDichVu_Result.cs">
@@ -111,6 +111,21 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Phong.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_DsDichVu_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_THONGKE_SOLUONG_DICHVU_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_THONGKE_SOLUONG_DON_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_THONGKE_SOLUONG_TIEC_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_THONGKE_TONGTIEN_DON_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

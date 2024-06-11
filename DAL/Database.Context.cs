@@ -141,11 +141,6 @@ namespace DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateCTHDDV", maHDDVParameter, maDVParameter, slParameter);
         }
     
-        public virtual ObjectResult<DsDichVu_Result> DsDichVu()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DsDichVu_Result>("DsDichVu");
-        }
-    
         public virtual ObjectResult<SHOW_DsCtHdDVTheoIdHd_Result> SHOW_DsCtHdDVTheoIdHd(Nullable<int> idHoaDonDV)
         {
             var idHoaDonDVParameter = idHoaDonDV.HasValue ?
@@ -153,6 +148,124 @@ namespace DAL
                 new ObjectParameter("IdHoaDonDV", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SHOW_DsCtHdDVTheoIdHd_Result>("SHOW_DsCtHdDVTheoIdHd", idHoaDonDVParameter);
+        }
+    
+        public virtual ObjectResult<PROC_THONGKE_SOLUONG_DICHVU_Result> PROC_THONGKE_SOLUONG_DICHVU(Nullable<int> qUARTER, Nullable<int> yEAR)
+        {
+            var qUARTERParameter = qUARTER.HasValue ?
+                new ObjectParameter("QUARTER", qUARTER) :
+                new ObjectParameter("QUARTER", typeof(int));
+    
+            var yEARParameter = yEAR.HasValue ?
+                new ObjectParameter("YEAR", yEAR) :
+                new ObjectParameter("YEAR", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PROC_THONGKE_SOLUONG_DICHVU_Result>("PROC_THONGKE_SOLUONG_DICHVU", qUARTERParameter, yEARParameter);
+        }
+    
+        public virtual ObjectResult<PROC_THONGKE_SOLUONG_DON_Result> PROC_THONGKE_SOLUONG_DON(Nullable<int> qUARTER, Nullable<int> nAM)
+        {
+            var qUARTERParameter = qUARTER.HasValue ?
+                new ObjectParameter("QUARTER", qUARTER) :
+                new ObjectParameter("QUARTER", typeof(int));
+    
+            var nAMParameter = nAM.HasValue ?
+                new ObjectParameter("NAM", nAM) :
+                new ObjectParameter("NAM", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PROC_THONGKE_SOLUONG_DON_Result>("PROC_THONGKE_SOLUONG_DON", qUARTERParameter, nAMParameter);
+        }
+    
+        public virtual ObjectResult<PROC_THONGKE_SOLUONG_TIEC_Result> PROC_THONGKE_SOLUONG_TIEC(Nullable<int> qUARTER, Nullable<int> yEAR)
+        {
+            var qUARTERParameter = qUARTER.HasValue ?
+                new ObjectParameter("QUARTER", qUARTER) :
+                new ObjectParameter("QUARTER", typeof(int));
+    
+            var yEARParameter = yEAR.HasValue ?
+                new ObjectParameter("YEAR", yEAR) :
+                new ObjectParameter("YEAR", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PROC_THONGKE_SOLUONG_TIEC_Result>("PROC_THONGKE_SOLUONG_TIEC", qUARTERParameter, yEARParameter);
+        }
+    
+        public virtual ObjectResult<PROC_THONGKE_TONGTIEN_DON_Result> PROC_THONGKE_TONGTIEN_DON(Nullable<int> qUARTER, Nullable<int> nAM)
+        {
+            var qUARTERParameter = qUARTER.HasValue ?
+                new ObjectParameter("QUARTER", qUARTER) :
+                new ObjectParameter("QUARTER", typeof(int));
+    
+            var nAMParameter = nAM.HasValue ?
+                new ObjectParameter("NAM", nAM) :
+                new ObjectParameter("NAM", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PROC_THONGKE_TONGTIEN_DON_Result>("PROC_THONGKE_TONGTIEN_DON", qUARTERParameter, nAMParameter);
+        }
+    
+        public virtual int AddCTHDDV1(Nullable<int> maHDDV, Nullable<int> maDV, Nullable<int> sl)
+        {
+            var maHDDVParameter = maHDDV.HasValue ?
+                new ObjectParameter("maHDDV", maHDDV) :
+                new ObjectParameter("maHDDV", typeof(int));
+    
+            var maDVParameter = maDV.HasValue ?
+                new ObjectParameter("maDV", maDV) :
+                new ObjectParameter("maDV", typeof(int));
+    
+            var slParameter = sl.HasValue ?
+                new ObjectParameter("sl", sl) :
+                new ObjectParameter("sl", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddCTHDDV1", maHDDVParameter, maDVParameter, slParameter);
+        }
+    
+        public virtual int AddHDDV1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddHDDV1");
+        }
+    
+        public virtual int DeleteCTHDDV1(Nullable<int> maHDDV, Nullable<int> maDV)
+        {
+            var maHDDVParameter = maHDDV.HasValue ?
+                new ObjectParameter("maHDDV", maHDDV) :
+                new ObjectParameter("maHDDV", typeof(int));
+    
+            var maDVParameter = maDV.HasValue ?
+                new ObjectParameter("maDV", maDV) :
+                new ObjectParameter("maDV", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteCTHDDV1", maHDDVParameter, maDVParameter);
+        }
+    
+        public virtual int DeleteHDDV1(Nullable<int> maHDDV)
+        {
+            var maHDDVParameter = maHDDV.HasValue ?
+                new ObjectParameter("maHDDV", maHDDV) :
+                new ObjectParameter("maHDDV", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteHDDV1", maHDDVParameter);
+        }
+    
+        public virtual int UpdateCTHDDV1(Nullable<int> maHDDV, Nullable<int> maDV, Nullable<int> sl)
+        {
+            var maHDDVParameter = maHDDV.HasValue ?
+                new ObjectParameter("maHDDV", maHDDV) :
+                new ObjectParameter("maHDDV", typeof(int));
+    
+            var maDVParameter = maDV.HasValue ?
+                new ObjectParameter("maDV", maDV) :
+                new ObjectParameter("maDV", typeof(int));
+    
+            var slParameter = sl.HasValue ?
+                new ObjectParameter("sl", sl) :
+                new ObjectParameter("sl", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateCTHDDV1", maHDDVParameter, maDVParameter, slParameter);
+        }
+    
+        public virtual ObjectResult<PROC_DsDichVu_Result> PROC_DsDichVu()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PROC_DsDichVu_Result>("PROC_DsDichVu");
         }
     }
 }

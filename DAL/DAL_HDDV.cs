@@ -61,5 +61,10 @@ namespace DAL
             var slParam = new SqlParameter("@sl", sl);
             entities.Database.ExecuteSqlCommand("UpdateCTHDDV @maHDDV, @maDV, @sl", maHDDVParam, maDVParam, slParam);
         }
+
+        public HDDichVu GetDetailById(int id)
+        {
+            return entities.HDDichVus.FirstOrDefault(pd => pd.MaHDDV == id);
+        }
     }
 }

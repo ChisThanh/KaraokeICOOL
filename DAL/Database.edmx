@@ -292,7 +292,6 @@
         <Function Name="DeleteHDDV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="maHDDV" Type="int" Mode="In" />
         </Function>
-        <Function Name="DsDichVu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="func_FindDichVu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="search" Type="varchar" Mode="In" />
           <ReturnType>
@@ -320,6 +319,23 @@
               </RowType>
             </CollectionType>
           </ReturnType>
+        </Function>
+        <Function Name="PROC_DsDichVu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PROC_THONGKE_SOLUONG_DICHVU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="QUARTER" Type="int" Mode="In" />
+          <Parameter Name="YEAR" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PROC_THONGKE_SOLUONG_DON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="QUARTER" Type="int" Mode="In" />
+          <Parameter Name="NAM" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PROC_THONGKE_SOLUONG_TIEC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="QUARTER" Type="int" Mode="In" />
+          <Parameter Name="YEAR" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PROC_THONGKE_TONGTIEN_DON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="QUARTER" Type="int" Mode="In" />
+          <Parameter Name="NAM" Type="int" Mode="In" />
         </Function>
         <Function Name="SHOW_DsCtHdDVTheoIdHd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdHoaDonDV" Type="int" Mode="In" />
@@ -785,10 +801,47 @@
             <Parameter Name="maDV" Mode="In" Type="Int32" />
             <Parameter Name="sl" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="DsDichVu" ReturnType="Collection(KaraokeICOOLModel.DsDichVu_Result)" />
+			
+			
           <FunctionImport Name="SHOW_DsCtHdDVTheoIdHd" ReturnType="Collection(KaraokeICOOLModel.SHOW_DsCtHdDVTheoIdHd_Result)">
           <Parameter Name="IdHoaDonDV" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="PROC_THONGKE_SOLUONG_DICHVU" ReturnType="Collection(KaraokeICOOLModel.PROC_THONGKE_SOLUONG_DICHVU_Result)">
+            <Parameter Name="QUARTER" Mode="In" Type="Int32" />
+            <Parameter Name="YEAR" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_THONGKE_SOLUONG_DON" ReturnType="Collection(KaraokeICOOLModel.PROC_THONGKE_SOLUONG_DON_Result)">
+            <Parameter Name="QUARTER" Mode="In" Type="Int32" />
+            <Parameter Name="NAM" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_THONGKE_SOLUONG_TIEC" ReturnType="Collection(KaraokeICOOLModel.PROC_THONGKE_SOLUONG_TIEC_Result)">
+            <Parameter Name="QUARTER" Mode="In" Type="Int32" />
+            <Parameter Name="YEAR" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_THONGKE_TONGTIEN_DON" ReturnType="Collection(KaraokeICOOLModel.PROC_THONGKE_TONGTIEN_DON_Result)">
+            <Parameter Name="QUARTER" Mode="In" Type="Int32" />
+            <Parameter Name="NAM" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddCTHDDV1">
+            <Parameter Name="maHDDV" Mode="In" Type="Int32" />
+            <Parameter Name="maDV" Mode="In" Type="Int32" />
+            <Parameter Name="sl" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddHDDV1" />
+          <FunctionImport Name="DeleteCTHDDV1">
+            <Parameter Name="maHDDV" Mode="In" Type="Int32" />
+            <Parameter Name="maDV" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteHDDV1">
+          <Parameter Name="maHDDV" Mode="In" Type="Int32" />
+          </FunctionImport>
+
+          <FunctionImport Name="UpdateCTHDDV1">
+            <Parameter Name="maHDDV" Mode="In" Type="Int32" />
+            <Parameter Name="maDV" Mode="In" Type="Int32" />
+            <Parameter Name="sl" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_DsDichVu" ReturnType="Collection(KaraokeICOOLModel.PROC_DsDichVu_Result)" />
         </EntityContainer>
         <ComplexType Name="DSHDDichVu_Result">
           <Property Type="Int32" Name="MaHDDV" Nullable="false" />
@@ -813,18 +866,35 @@
           <Property Type="Int64" Name="Gia" Nullable="false" />
           <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="255" />
         </ComplexType>
-        <ComplexType Name="DsDichVu_Result">
-          <Property Type="Int32" Name="MaDV" Nullable="false" />
-          <Property Type="String" Name="TenDV" Nullable="false" MaxLength="100" />
-          <Property Type="Int64" Name="Gia" Nullable="false" />
-          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="255" />
-        </ComplexType>
+
         <ComplexType Name="SHOW_DsCtHdDVTheoIdHd_Result">
           <Property Type="Int32" Name="MaHDDV" Nullable="false" />
           <Property Type="Int32" Name="MaDV" Nullable="false" />
           <Property Type="String" Name="TenDV" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="SoLuong" Nullable="false" />
           <Property Type="Int64" Name="Gia" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PROC_THONGKE_SOLUONG_DICHVU_Result">
+          <Property Type="Int32" Name="Month" Nullable="true" />
+          <Property Type="Int32" Name="quantity" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PROC_THONGKE_SOLUONG_DON_Result">
+          <Property Type="Int32" Name="Month" Nullable="true" />
+          <Property Type="Decimal" Name="Quantity" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="PROC_THONGKE_SOLUONG_TIEC_Result">
+          <Property Type="Int32" Name="Month" Nullable="true" />
+          <Property Type="Int32" Name="quantity" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PROC_THONGKE_TONGTIEN_DON_Result">
+          <Property Type="Int32" Name="Month" Nullable="true" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="PROC_DsDichVu_Result">
+          <Property Type="Int32" Name="MaDV" Nullable="false" />
+          <Property Type="String" Name="TenDV" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Gia" Nullable="false" />
+          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="255" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -973,13 +1043,47 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="AddCTHDDV" FunctionName="KaraokeICOOLModel.Store.AddCTHDDV" />
-          <FunctionImportMapping FunctionImportName="AddHDDV" FunctionName="KaraokeICOOLModel.Store.AddHDDV" />
-          <FunctionImportMapping FunctionImportName="DeleteCTHDDV" FunctionName="KaraokeICOOLModel.Store.DeleteCTHDDV" />
-          <FunctionImportMapping FunctionImportName="DeleteHDDV" FunctionName="KaraokeICOOLModel.Store.DeleteHDDV" />
-          <FunctionImportMapping FunctionImportName="func_FindDichVu" FunctionName="KaraokeICOOLModel.Store.func_FindDichVu">
+          <FunctionImportMapping FunctionImportName="PROC_THONGKE_SOLUONG_DICHVU" FunctionName="KaraokeICOOLModel.Store.PROC_THONGKE_SOLUONG_DICHVU">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="KaraokeICOOLModel.func_FindDichVu_Result">
+              <ComplexTypeMapping TypeName="KaraokeICOOLModel.PROC_THONGKE_SOLUONG_DICHVU_Result">
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PROC_THONGKE_SOLUONG_DON" FunctionName="KaraokeICOOLModel.Store.PROC_THONGKE_SOLUONG_DON">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KaraokeICOOLModel.PROC_THONGKE_SOLUONG_DON_Result">
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PROC_THONGKE_SOLUONG_TIEC" FunctionName="KaraokeICOOLModel.Store.PROC_THONGKE_SOLUONG_TIEC">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KaraokeICOOLModel.PROC_THONGKE_SOLUONG_TIEC_Result">
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PROC_THONGKE_TONGTIEN_DON" FunctionName="KaraokeICOOLModel.Store.PROC_THONGKE_TONGTIEN_DON">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KaraokeICOOLModel.PROC_THONGKE_TONGTIEN_DON_Result">
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddCTHDDV1" FunctionName="KaraokeICOOLModel.Store.AddCTHDDV" />
+          <FunctionImportMapping FunctionImportName="AddHDDV1" FunctionName="KaraokeICOOLModel.Store.AddHDDV" />
+          <FunctionImportMapping FunctionImportName="DeleteCTHDDV1" FunctionName="KaraokeICOOLModel.Store.DeleteCTHDDV" />
+          <FunctionImportMapping FunctionImportName="DeleteHDDV1" FunctionName="KaraokeICOOLModel.Store.DeleteHDDV" />
+
+          <FunctionImportMapping FunctionImportName="UpdateCTHDDV1" FunctionName="KaraokeICOOLModel.Store.UpdateCTHDDV" />
+          <FunctionImportMapping FunctionImportName="PROC_DsDichVu" FunctionName="KaraokeICOOLModel.Store.PROC_DsDichVu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KaraokeICOOLModel.PROC_DsDichVu_Result">
                 <ScalarProperty Name="MaDV" ColumnName="MaDV" />
                 <ScalarProperty Name="TenDV" ColumnName="TenDV" />
                 <ScalarProperty Name="Gia" ColumnName="Gia" />
@@ -987,40 +1091,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="func_FindDichVuTheoLoai" FunctionName="KaraokeICOOLModel.Store.func_FindDichVuTheoLoai">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="KaraokeICOOLModel.func_FindDichVuTheoLoai_Result">
-                <ScalarProperty Name="MaDV" ColumnName="MaDV" />
-                <ScalarProperty Name="TenDV" ColumnName="TenDV" />
-                <ScalarProperty Name="Anh" ColumnName="Anh" />
-                <ScalarProperty Name="Gia" ColumnName="Gia" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UpdateCTHDDV" FunctionName="KaraokeICOOLModel.Store.UpdateCTHDDV" />
-          <FunctionImportMapping FunctionImportName="DsDichVu" FunctionName="KaraokeICOOLModel.Store.DsDichVu">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="KaraokeICOOLModel.DsDichVu_Result">
-                <ScalarProperty Name="MaDV" ColumnName="MaDV" />
-                <ScalarProperty Name="TenDV" ColumnName="TenDV" />
-                <ScalarProperty Name="Gia" ColumnName="Gia" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SHOW_DsCtHdDVTheoIdHd" FunctionName="KaraokeICOOLModel.Store.SHOW_DsCtHdDVTheoIdHd">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="KaraokeICOOLModel.SHOW_DsCtHdDVTheoIdHd_Result">
-                <ScalarProperty Name="MaHDDV" ColumnName="MaHDDV" />
-                <ScalarProperty Name="MaDV" ColumnName="MaDV" />
-                <ScalarProperty Name="TenDV" ColumnName="TenDV" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="Gia" ColumnName="Gia" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

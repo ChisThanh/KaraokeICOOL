@@ -23,6 +23,8 @@ namespace KaraokeICOOL
             InitializeComponent();
 
             lb_CurrentUserName.Text = "Van Anh";
+
+            showFrm(new frmThongKe());
         }
         public void closeForm()
         {
@@ -66,5 +68,22 @@ namespace KaraokeICOOL
             closeForm();
             showFrm(new frmPhieuDat());
 		}
-	}
+
+        private void sbtn_Dashboard_Click(object sender, EventArgs e)
+        {
+            closeForm();
+            showFrm(new frmThongKe());
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            closeForm();
+            showFrm(new frmThanhToan());
+        }
+    }
 }

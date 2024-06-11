@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="BLL_DichVu.cs" />
     <Compile Include="BLL_HDDV.cs" />
+    <Compile Include="BLL_HoaDon.cs" />
+    <Compile Include="BLL_PhieuDat.cs" />
+    <Compile Include="BLL_PhieuPhat.cs" />
     <Compile Include="BLL_TaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

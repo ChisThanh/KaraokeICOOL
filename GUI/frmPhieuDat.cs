@@ -338,7 +338,7 @@ namespace KaraokeICOOL
 				return;
 			}
 
-			phieudat.NgayNhan = null;
+            //phieudat.NgayNhan = null;
 			phieudat.TinhTrang = "Đã hủy";
 
 			entity.Phongs.FirstOrDefault(linq => linq.MaPhong == phieudat.MaPhong).TrangThai = "Trống";
