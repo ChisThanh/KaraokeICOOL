@@ -63,13 +63,13 @@
             series5.ChartArea = "ChartArea1";
             series5.IsValueShownAsLabel = true;
             series5.Legend = "Legend1";
-            series5.Name = "Series1";
+            series5.Name = "Đơn";
             series6.ChartArea = "ChartArea1";
             series6.Legend = "Legend1";
-            series6.Name = "Series2";
+            series6.Name = "Dịch vụ";
             series7.ChartArea = "ChartArea1";
             series7.Legend = "Legend1";
-            series7.Name = "Series3";
+            series7.Name = "Tiệc";
             this.chart_SoLuong.Series.Add(series5);
             this.chart_SoLuong.Series.Add(series6);
             this.chart_SoLuong.Series.Add(series7);

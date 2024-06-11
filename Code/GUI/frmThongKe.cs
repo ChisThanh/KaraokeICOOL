@@ -73,6 +73,7 @@ namespace KaraokeICOOL
             if (data1.Count() == 0 || data2.Count() == 0 || data3.Count() == 0 || data4.Count() == 0)
             {
                 MessageBox.Show("Không có dữ liệu", "Thông báo");
+                return;
             }
 
             chart_DoanhThu.Series[0].Points.Clear();
