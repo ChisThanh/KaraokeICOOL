@@ -98,7 +98,7 @@ CREATE TABLE PhieuPhat (
 CREATE TABLE PhieuDat (
     MaPhieu INT IDENTITY(1,1),
     NgayDat DATE NOT NULL,
-    NgayNhan DATE NOT NULL,
+    NgayNhan DATE,
     LoaiPhieu NVARCHAR(255) NOT NULL,
     HoTenKH NVARCHAR(100) NOT NULL,
     CMND VARCHAR(20) NOT NULL,

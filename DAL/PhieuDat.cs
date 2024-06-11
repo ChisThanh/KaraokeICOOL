@@ -22,7 +22,7 @@ namespace DAL
     
         public int MaPhieu { get; set; }
         public System.DateTime NgayDat { get; set; }
-        public System.DateTime NgayNhan { get; set; }
+        public Nullable<System.DateTime> NgayNhan { get; set; }
         public string LoaiPhieu { get; set; }
         public string HoTenKH { get; set; }
         public string CMND { get; set; }

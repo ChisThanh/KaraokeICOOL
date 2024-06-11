@@ -117,9 +117,6 @@
     <Compile Include="SHOW_DsCtHdDVTheoIdHd_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
     <Compile Include="TaiKhoan.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>

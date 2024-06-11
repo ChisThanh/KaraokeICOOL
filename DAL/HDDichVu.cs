@@ -22,7 +22,7 @@ namespace DAL
         }
     
         public int MaHDDV { get; set; }
-        public long TongTien { get; set; }
+        public Nullable<long> TongTien { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHDDV> CTHDDVs { get; set; }

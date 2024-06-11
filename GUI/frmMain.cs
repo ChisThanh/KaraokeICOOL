@@ -60,5 +60,11 @@ namespace KaraokeICOOL
             closeForm();
             showFrm(new frmHDDV());
         }
-    }
+
+		private void sbtn_PhieuDat_Click(object sender, EventArgs e)
+		{
+            closeForm();
+            showFrm(new frmPhieuDat());
+		}
+	}
 }

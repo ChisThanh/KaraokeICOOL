@@ -18,7 +18,7 @@ namespace DAL
         public int MaNV { get; set; }
         public System.DateTime GioVao { get; set; }
         public System.DateTime GioRa { get; set; }
-        public long TongTien { get; set; }
+        public Nullable<long> TongTien { get; set; }
         public System.DateTime NgayLap { get; set; }
         public Nullable<int> MaPhieuPhat { get; set; }
         public Nullable<int> MaHDDV { get; set; }

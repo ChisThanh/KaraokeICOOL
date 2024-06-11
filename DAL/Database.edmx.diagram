@@ -30,7 +30,6 @@
         <AssociationConnector Association="KaraokeICOOLModel.FK_PhieuDat_Tiec" ManuallyRouted="false" />
         <AssociationConnector Association="KaraokeICOOLModel.FK_TrangBi_Phong" ManuallyRouted="false" />
         <AssociationConnector Association="KaraokeICOOLModel.FK_TrangBi_ThietBi" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="KaraokeICOOLModel.sysdiagram" Width="1.5" PointX="6.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

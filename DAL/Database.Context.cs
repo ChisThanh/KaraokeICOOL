@@ -40,7 +40,6 @@ namespace DAL
         public virtual DbSet<ThietBi> ThietBis { get; set; }
         public virtual DbSet<Tiec> Tiecs { get; set; }
         public virtual DbSet<TrangBi> TrangBis { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     
         public virtual int AddCTHDDV(Nullable<int> maHDDV, Nullable<int> maDV, Nullable<int> sl)
         {
