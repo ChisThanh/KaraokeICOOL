@@ -23,32 +23,6 @@ GO
 --==============================================================================================================
 
 
-
---Exec SHOW_DsCtHdDVTheoIdHd 1
-CREATE FUNCTION func_FindDichVu(@search varchar(255))
-RETURNS TABLE
-as
-	return(select MaDV,TenDV,Gia,GhiChu
-	from DichVu DV
-	where (DV.TenDV  LIKE N'%' + @search + '%' ));
-GO
---==============================================================================================================
-
-
-
-
-CREATE FUNCTION func_FindDichVuTheoLoai(@search varchar(255),@ghichu varchar(255))
-RETURNS TABLE
-as
-	return(select * 
-	from DichVu DV
-	where DV.TenDV  LIKE N'%' + @search + '%'
-	AND GhiChu=@ghichu
-	);
-GO
---==============================================================================================================
-
-
 CREATE TABLE CTHDDV(
 	MaHDDV int NOT NULL,
 	MaDV int NOT NULL,
@@ -615,9 +589,6 @@ GO
 --==============================================================================================================
 
 
-
-
---SELECT * FROM dbo.func_FindDichVuTheoLoai(N'tôm',N'MÓN CHÍNH')
 CREATE PROCEDURE AddCTHDDV
     @maHDDV INT,
     @maDV INT,
@@ -896,21 +867,8 @@ BEGIN
     ORDER BY  Month
 END
 GO
+
 --==============================================================================================================
-
-
-
-
-CREATE PROC SHOW_DsCtHdDVTheoIdHd @IdHoaDonDV int
-AS
-	select MaHDDV,DV.MaDV, TenDV, SoLuong, Gia 
-	from CTHDDV CT 
-	INNER JOIN DichVu DV ON CT.MaDV = DV.MaDV 
-	WHERE MaHDDV = @IdHoaDonDV
-GO
---==============================================================================================================
-
-
 
 
 CREATE PROCEDURE UpdateCTHDDV

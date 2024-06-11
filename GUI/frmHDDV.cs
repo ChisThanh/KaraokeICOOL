@@ -45,12 +45,25 @@ namespace KaraokeICOOL
         private void btnFind_Click(object sender, EventArgs e)
         {
             string search = txtTenDV.Text;
-            var data = db.func_FindDichVu(search);
+            var data = db.DichVus
+                .Where(dv => dv.TenDV.Contains(search))
+                 .ToList();
             dgv_dichvu.DataSource = data;
         }
         private void LoadChiTietHoaDonDV(int ma)
         {
-            var ct = db.SHOW_DsCtHdDVTheoIdHd(ma);
+            var ct = db.CTHDDVs
+               .Where(cthddv => cthddv.MaHDDV == ma)
+               .Select(cthddv => new
+               {
+                   cthddv.MaHDDV,
+                   cthddv.MaDV,
+                   cthddv.DichVu.TenDV,
+                   cthddv.SoLuong,
+                   cthddv.DichVu.Gia
+               })
+               .ToList();
+
             dgv_CTHDDV.DataSource = ct;
         }
 
