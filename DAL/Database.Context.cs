@@ -12,24 +12,21 @@ namespace DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
+    
     public partial class KaraokeICOOLEntities : DbContext
     {
-        //public KaraokeICOOLEntities()
-        //    : base("name=KaraokeICOOLEntities")
-        //{
-        //}
-
-
         public KaraokeICOOLEntities()
-            : base("name=VanAnhConnections")
+            : base("name=KaraokeICOOLEntities")
         {
         }
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<CTHDDV> CTHDDVs { get; set; }
         public virtual DbSet<DichVu> DichVus { get; set; }
         public virtual DbSet<HDDichVu> HDDichVus { get; set; }
@@ -43,5 +40,120 @@ namespace DAL
         public virtual DbSet<ThietBi> ThietBis { get; set; }
         public virtual DbSet<Tiec> Tiecs { get; set; }
         public virtual DbSet<TrangBi> TrangBis { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+    
+        public virtual int AddCTHDDV(Nullable<int> maHDDV, Nullable<int> maDV, Nullable<int> sl)
+        {
+            var maHDDVParameter = maHDDV.HasValue ?
+                new ObjectParameter("maHDDV", maHDDV) :
+                new ObjectParameter("maHDDV", typeof(int));
+    
+            var maDVParameter = maDV.HasValue ?
+                new ObjectParameter("maDV", maDV) :
+                new ObjectParameter("maDV", typeof(int));
+    
+            var slParameter = sl.HasValue ?
+                new ObjectParameter("sl", sl) :
+                new ObjectParameter("sl", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddCTHDDV", maHDDVParameter, maDVParameter, slParameter);
+        }
+    
+        public virtual int AddHDDV()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddHDDV");
+        }
+    
+        public virtual int DeleteCTHDDV(Nullable<int> maHDDV, Nullable<int> maDV)
+        {
+            var maHDDVParameter = maHDDV.HasValue ?
+                new ObjectParameter("maHDDV", maHDDV) :
+                new ObjectParameter("maHDDV", typeof(int));
+    
+            var maDVParameter = maDV.HasValue ?
+                new ObjectParameter("maDV", maDV) :
+                new ObjectParameter("maDV", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteCTHDDV", maHDDVParameter, maDVParameter);
+        }
+    
+        public virtual int DeleteHDDV(Nullable<int> maHDDV)
+        {
+            var maHDDVParameter = maHDDV.HasValue ?
+                new ObjectParameter("maHDDV", maHDDV) :
+                new ObjectParameter("maHDDV", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteHDDV", maHDDVParameter);
+        }
+    
+        public virtual ObjectResult<DSHDDichVu_Result> DSHDDichVu()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DSHDDichVu_Result>("DSHDDichVu");
+        }
+    
+        [DbFunction("KaraokeICOOLEntities", "func_DsCtHdDVTheoIdHd")]
+        public virtual IQueryable<func_DsCtHdDVTheoIdHd_Result> func_DsCtHdDVTheoIdHd(Nullable<int> idHoaDonDV)
+        {
+            var idHoaDonDVParameter = idHoaDonDV.HasValue ?
+                new ObjectParameter("IdHoaDonDV", idHoaDonDV) :
+                new ObjectParameter("IdHoaDonDV", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<func_DsCtHdDVTheoIdHd_Result>("[KaraokeICOOLEntities].[func_DsCtHdDVTheoIdHd](@IdHoaDonDV)", idHoaDonDVParameter);
+        }
+    
+        [DbFunction("KaraokeICOOLEntities", "func_FindDichVu")]
+        public virtual IQueryable<func_FindDichVu_Result> func_FindDichVu(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("search", search) :
+                new ObjectParameter("search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<func_FindDichVu_Result>("[KaraokeICOOLEntities].[func_FindDichVu](@search)", searchParameter);
+        }
+    
+        [DbFunction("KaraokeICOOLEntities", "func_FindDichVuTheoLoai")]
+        public virtual IQueryable<func_FindDichVuTheoLoai_Result> func_FindDichVuTheoLoai(string search, string ghichu)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("search", search) :
+                new ObjectParameter("search", typeof(string));
+    
+            var ghichuParameter = ghichu != null ?
+                new ObjectParameter("ghichu", ghichu) :
+                new ObjectParameter("ghichu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<func_FindDichVuTheoLoai_Result>("[KaraokeICOOLEntities].[func_FindDichVuTheoLoai](@search, @ghichu)", searchParameter, ghichuParameter);
+        }
+    
+        public virtual int UpdateCTHDDV(Nullable<int> maHDDV, Nullable<int> maDV, Nullable<int> sl)
+        {
+            var maHDDVParameter = maHDDV.HasValue ?
+                new ObjectParameter("maHDDV", maHDDV) :
+                new ObjectParameter("maHDDV", typeof(int));
+    
+            var maDVParameter = maDV.HasValue ?
+                new ObjectParameter("maDV", maDV) :
+                new ObjectParameter("maDV", typeof(int));
+    
+            var slParameter = sl.HasValue ?
+                new ObjectParameter("sl", sl) :
+                new ObjectParameter("sl", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateCTHDDV", maHDDVParameter, maDVParameter, slParameter);
+        }
+    
+        public virtual ObjectResult<DsDichVu_Result> DsDichVu()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DsDichVu_Result>("DsDichVu");
+        }
+    
+        public virtual ObjectResult<SHOW_DsCtHdDVTheoIdHd_Result> SHOW_DsCtHdDVTheoIdHd(Nullable<int> idHoaDonDV)
+        {
+            var idHoaDonDVParameter = idHoaDonDV.HasValue ?
+                new ObjectParameter("IdHoaDonDV", idHoaDonDV) :
+                new ObjectParameter("IdHoaDonDV", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SHOW_DsCtHdDVTheoIdHd_Result>("SHOW_DsCtHdDVTheoIdHd", idHoaDonDVParameter);
+        }
     }
 }

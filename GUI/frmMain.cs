@@ -54,5 +54,11 @@ namespace KaraokeICOOL
             closeForm();
             showFrm(new frmThanhToan());
         }
+
+        private void sbtn_HDDV_Click(object sender, EventArgs e)
+        {
+            closeForm();
+            showFrm(new frmHDDV());
+        }
     }
 }

@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL_DichVu.cs" />
+    <Compile Include="BLL_HDDV.cs" />
     <Compile Include="BLL_TaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

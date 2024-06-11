@@ -118,7 +118,7 @@ CREATE TABLE PhieuDat (
 
 CREATE TABLE HDDichVu (
     MaHDDV INT IDENTITY(1,1),
-    TongTien BIGINT NOT NULL,
+    TongTien BIGINT,
 	CONSTRAINT PK_HDDichVu PRIMARY KEY (MaHDDV),
 );
 
@@ -139,7 +139,7 @@ CREATE TABLE HoaDon (
     MaNV INT NOT NULL,
 	GioVao DATETIME NOT NULL,
 	GioRa DATETIME NOT NULL,
-    TongTien BIGINT NOT NULL,
+    TongTien BIGINT,
     NgayLap DATE NOT NULL,
     MaPhieuPhat INT,
     MaHDDV INT,
@@ -387,3 +387,145 @@ SET DATEFORMAT DMY
 INSERT INTO HoaDon (MaNV, GioVao, GioRa, TongTien, NgayLap, MaPhieuDat)VALUES (3,'2023-06-01 14:00', '2023-06-01 18:00', 3100000, '2023-06-01',1)
 INSERT INTO HoaDon (MaNV, GioVao, GioRa, TongTien, NgayLap, MaPhieuDat)VALUES (4,'2023-06-02 10:00', '2023-06-02 15:00', 5125000, '2023-06-02',2)
 INSERT INTO HoaDon VALUES (4,'2023-06-02 10:00','2023-06-02 15:00', 3000000, '2023-06-02', 1, 1, 3)
+--====================================================================================================---
+GO
+CREATE PROC DsDichVu 
+AS
+	select MaDV,TenDV,Gia,GhiChu
+	from DichVu DV
+GO
+--EXEC DsDichVu
+--Exec sp_helptext 'DSHDDichVu'
+GO
+CREATE PROC SHOW_DsCtHdDVTheoIdHd @IdHoaDonDV int
+AS
+	select MaHDDV,DV.MaDV, TenDV, SoLuong, Gia 
+	from CTHDDV CT 
+	INNER JOIN DichVu DV ON CT.MaDV = DV.MaDV 
+	WHERE MaHDDV = @IdHoaDonDV
+go
+--Exec SHOW_DsCtHdDVTheoIdHd 1
+CREATE FUNCTION func_FindDichVu(@search varchar(255))
+RETURNS TABLE
+as
+	return(select MaDV,TenDV,Gia,GhiChu
+	from DichVu DV
+	where (DV.TenDV  LIKE N'%' + @search + '%' ));
+GO
+--SELECT * FROM dbo.func_FindDichVu(N'tôm')
+GO
+CREATE FUNCTION func_FindDichVuTheoLoai(@search varchar(255),@ghichu varchar(255))
+RETURNS TABLE
+as
+	return(select * 
+	from DichVu DV
+	where DV.TenDV  LIKE N'%' + @search + '%'
+	AND GhiChu=@ghichu
+	);
+GO
+--SELECT * FROM dbo.func_FindDichVuTheoLoai(N'tôm',N'MÓN CHÍNH')
+CREATE PROCEDURE AddCTHDDV
+    @maHDDV INT,
+    @maDV INT,
+    @sl INT
+AS
+BEGIN
+    BEGIN TRANSACTION;
+	-- Kiểm tra xem chi tiết hóa đơn đã tồn tại hay chưa
+    IF EXISTS (SELECT 1 FROM CTHDDV WHERE MaHDDV = @maHDDV AND MaDV = @maDV)
+    BEGIN
+        -- Nếu tồn tại, cập nhật số lượng
+        UPDATE CTHDDV
+        SET SoLuong = SoLuong + @sl
+        WHERE MaHDDV = @maHDDV AND MaDV = @maDV;
+    END
+    ELSE
+    BEGIN
+        -- Nếu không tồn tại, thêm chi tiết hóa đơn mới
+        INSERT INTO CTHDDV(MaHDDV, MaDV, SoLuong)
+        VALUES (@maHDDV, @maDV, @sl);
+    END
+
+    -- Tính lại tổng tiền hóa đơn
+    DECLARE @tongTien  Int;
+    SELECT @tongTien = SUM(SoLuong * DV.Gia )
+    FROM CTHDDV CT
+	INNER JOIN DichVu DV ON CT.MaDV = DV.MaDV 
+    WHERE MaHDDV = @maHDDV;
+
+    -- Cập nhật tổng tiền vào bảng hóa đơn
+    UPDATE HDDichVu
+    SET TongTien = @tongTien
+    WHERE MaHDDV = @maHDDV;
+
+    COMMIT TRANSACTION;
+END;
+GO
+CREATE PROCEDURE UpdateCTHDDV
+    @maHDDV INT,
+    @maDV INT,
+    @sl INT
+AS
+BEGIN
+    BEGIN TRANSACTION;
+
+    -- Cập nhật chi tiết hóa đơn
+    UPDATE CTHDDV
+	SET SoLuong=@sl
+    WHERE MaHDDV= @maHDDV AND MaDV= @maDV;
+
+    -- Tính lại tổng tiền hóa đơn
+    DECLARE @tongTien  Int;
+    SELECT @tongTien = SUM(SoLuong * DV.Gia )
+    FROM CTHDDV CT
+	INNER JOIN DichVu DV ON CT.MaDV = DV.MaDV 
+    WHERE MaHDDV = @maHDDV;
+
+    -- Cập nhật tổng tiền vào bảng hóa đơn
+    UPDATE HDDichVu
+    SET TongTien = @tongTien
+    WHERE MaHDDV = @maHDDV;
+
+    COMMIT TRANSACTION;
+END;
+GO
+CREATE PROCEDURE DeleteCTHDDV
+    @maHDDV INT,
+    @maDV INT
+AS
+BEGIN
+    BEGIN TRANSACTION;
+
+    -- Cập nhật chi tiết hóa đơn
+    DELETE CTHDDV
+    WHERE MaHDDV= @maHDDV AND MaDV= @maDV;
+
+    -- Tính lại tổng tiền hóa đơn
+    DECLARE @tongTien  Int;
+    SELECT @tongTien = COALESCE(SUM(CT.SoLuong * DV.Gia), 0)
+    FROM CTHDDV CT
+	INNER JOIN DichVu DV ON CT.MaDV = DV.MaDV 
+    WHERE MaHDDV = @maHDDV;
+
+    -- Cập nhật tổng tiền vào bảng hóa đơn
+    UPDATE HDDichVu
+    SET TongTien = @tongTien
+    WHERE MaHDDV = @maHDDV;
+
+    COMMIT TRANSACTION;
+END;
+GO
+CREATE PROCEDURE AddHDDV
+AS
+BEGIN
+    INSERT INTO HDDichVu
+    VALUES (0);
+END;
+GO
+CREATE PROCEDURE DeleteHDDV
+	@maHDDV INT
+AS
+BEGIN
+    DELETE FROM HDDichVu WHERE MaHDDV=@maHDDV
+END;
+go

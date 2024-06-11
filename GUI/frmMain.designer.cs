@@ -30,22 +30,23 @@
         {
             this.sbtn_Dashboard = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.sbtn_ThanhToanHD = new System.Windows.Forms.ToolStripButton();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.sbtn_DangXuat = new System.Windows.Forms.ToolStripButton();
             this.lb_CurrentUserName = new System.Windows.Forms.ToolStripLabel();
+            this.sbtn_ThanhToanHD = new System.Windows.Forms.ToolStripButton();
+            this.sbtn_HDDV = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.toolStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // sbtn_Dashboard
             // 
-            this.sbtn_Dashboard.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sbtn_Dashboard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sbtn_Dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(54)))), ((int)(((byte)(137)))));
             this.sbtn_Dashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.sbtn_Dashboard.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.sbtn_Dashboard.Name = "sbtn_Dashboard";
-            this.sbtn_Dashboard.Size = new System.Drawing.Size(86, 32);
+            this.sbtn_Dashboard.Size = new System.Drawing.Size(112, 43);
             this.sbtn_Dashboard.Text = "Dashboard";
             // 
             // toolStrip1
@@ -56,24 +57,13 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sbtn_Dashboard,
-            this.sbtn_ThanhToanHD});
+            this.sbtn_ThanhToanHD,
+            this.sbtn_HDDV});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1920, 35);
+            this.toolStrip1.Size = new System.Drawing.Size(1920, 46);
             this.toolStrip1.TabIndex = 41;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // sbtn_ThanhToanHD
-            // 
-            this.sbtn_ThanhToanHD.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sbtn_ThanhToanHD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(54)))), ((int)(((byte)(137)))));
-            this.sbtn_ThanhToanHD.Image = global::KaraokeICOOL.Properties.Resources.payment;
-            this.sbtn_ThanhToanHD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.sbtn_ThanhToanHD.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.sbtn_ThanhToanHD.Name = "sbtn_ThanhToanHD";
-            this.sbtn_ThanhToanHD.Size = new System.Drawing.Size(93, 32);
-            this.sbtn_ThanhToanHD.Text = "Hóa Đơn";
-            this.sbtn_ThanhToanHD.Click += new System.EventHandler(this.sbtn_ThanhToanHD_Click);
             // 
             // toolStrip3
             // 
@@ -110,6 +100,30 @@
             this.lb_CurrentUserName.Name = "lb_CurrentUserName";
             this.lb_CurrentUserName.Size = new System.Drawing.Size(20, 34);
             // 
+            // sbtn_ThanhToanHD
+            // 
+            this.sbtn_ThanhToanHD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sbtn_ThanhToanHD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(54)))), ((int)(((byte)(137)))));
+            this.sbtn_ThanhToanHD.Image = global::KaraokeICOOL.Properties.Resources.payment;
+            this.sbtn_ThanhToanHD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.sbtn_ThanhToanHD.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.sbtn_ThanhToanHD.Name = "sbtn_ThanhToanHD";
+            this.sbtn_ThanhToanHD.Size = new System.Drawing.Size(114, 43);
+            this.sbtn_ThanhToanHD.Text = "Hóa Đơn";
+            this.sbtn_ThanhToanHD.Click += new System.EventHandler(this.sbtn_ThanhToanHD_Click);
+            // 
+            // sbtn_HDDV
+            // 
+            this.sbtn_HDDV.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sbtn_HDDV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(54)))), ((int)(((byte)(137)))));
+            this.sbtn_HDDV.Image = global::KaraokeICOOL.Properties.Resources.bill;
+            this.sbtn_HDDV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.sbtn_HDDV.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.sbtn_HDDV.Name = "sbtn_HDDV";
+            this.sbtn_HDDV.Size = new System.Drawing.Size(186, 43);
+            this.sbtn_HDDV.Text = "Hóa Đơn Dịch Vụ";
+            this.sbtn_HDDV.Click += new System.EventHandler(this.sbtn_HDDV_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -138,5 +152,6 @@
         private System.Windows.Forms.ToolStrip toolStrip3;
         private System.Windows.Forms.ToolStripButton sbtn_DangXuat;
         private System.Windows.Forms.ToolStripLabel lb_CurrentUserName;
+        private System.Windows.Forms.ToolStripButton sbtn_HDDV;
     }
 }

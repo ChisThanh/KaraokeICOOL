@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL_DichVu.cs" />
+    <Compile Include="DAL_HDDV.cs" />
     <Compile Include="DAL_TaiKhoan.cs" />
     <Compile Include="CTHDDV.cs">
       <DependentUpon>Database.tt</DependentUpon>
@@ -73,6 +75,21 @@
       <DependentUpon>Database.edmx</DependentUpon>
     </Compile>
     <Compile Include="DichVu.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DsDichVu_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DSHDDichVu_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func_DsCtHdDVTheoIdHd_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func_FindDichVuTheoLoai_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func_FindDichVu_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="HDDichVu.cs">
@@ -97,6 +114,12 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SHOW_DsCtHdDVTheoIdHd_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="TaiKhoan.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
