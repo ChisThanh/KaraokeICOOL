@@ -292,34 +292,6 @@
         <Function Name="DeleteHDDV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="maHDDV" Type="int" Mode="In" />
         </Function>
-        <Function Name="func_FindDichVu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="search" Type="varchar" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="MaDV" Type="int" Nullable="false" />
-                <Property Name="TenDV" Type="nvarchar" MaxLength="100" Nullable="false" />
-                <Property Name="Gia" Type="bigint" Nullable="false" />
-                <Property Name="GhiChu" Type="nvarchar" MaxLength="255" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="func_FindDichVuTheoLoai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="search" Type="varchar" Mode="In" />
-          <Parameter Name="ghichu" Type="varchar" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="MaDV" Type="int" Nullable="false" />
-                <Property Name="TenDV" Type="nvarchar" MaxLength="100" Nullable="false" />
-                <Property Name="Anh" Type="varchar" MaxLength="255" />
-                <Property Name="Gia" Type="bigint" Nullable="false" />
-                <Property Name="GhiChu" Type="nvarchar" MaxLength="255" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
         <Function Name="PROC_DsDichVu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="PROC_THONGKE_SOLUONG_DICHVU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="QUARTER" Type="int" Mode="In" />
@@ -336,9 +308,6 @@
         <Function Name="PROC_THONGKE_TONGTIEN_DON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="QUARTER" Type="int" Mode="In" />
           <Parameter Name="NAM" Type="int" Mode="In" />
-        </Function>
-        <Function Name="SHOW_DsCtHdDVTheoIdHd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IdHoaDonDV" Type="int" Mode="In" />
         </Function>
         <Function Name="UpdateCTHDDV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="maHDDV" Type="int" Mode="In" />
